@@ -3,7 +3,12 @@ import { Message } from "./message.model";
 
 @Inject({})
 export class MessageService {
-  private messages: Message[] = [];
+  private messages: Message[] = [
+    {
+      content: 'Fuck this all',
+      username: 'Garold'
+    }
+  ];
 
   addMessage(message: Message) {
     this.messages.push(message);

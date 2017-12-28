@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       <app-message-input></app-message-input>
       <app-message-list></app-message-list>
     </div>
-  `
+  `,
 })
 export class MessagesComponent {
 
