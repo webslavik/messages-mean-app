@@ -11,8 +11,12 @@ import { MessageComponent } from './message/message.component';
 import { MessageListComponent } from './message/message-list.component';
 import { MessageInputComponent } from './message/message-input.component';
 import { MessagesComponent } from './message/messages.component';
-import { AuthorizationComponent } from './auth/authorization.component';
 import { HeaderComponent } from './header.component';
+import { AuthorizationComponent } from './auth/authorization.component';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+
 
 
 @NgModule({
@@ -23,7 +27,10 @@ import { HeaderComponent } from './header.component';
     MessageInputComponent,
     MessagesComponent,
     AuthorizationComponent,
-    HeaderComponent
+    HeaderComponent,
+    LogoutComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
