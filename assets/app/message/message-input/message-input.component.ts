@@ -11,6 +11,7 @@ import { Message } from '../message.model';
 export class MessageInputComponent implements OnInit {
 
   form: FormGroup;
+  message: Message;
 
   constructor(private messageService: MessageService) {}
 
@@ -18,14 +19,28 @@ export class MessageInputComponent implements OnInit {
     this.form = new FormGroup({
       'content': new FormControl(null)
     });
+
+    this.messageService.messageIsEdit.subscribe(
+      (message: Message) => this.message = message);
   }
 
   onSubmit() {
-    const message = new Message(this.form.value.content, 'Jack');
-    this.messageService.addMessage(message)
-        .subscribe(
-          res => console.log(res),
-          err => console.log(err))
+    if (this.message) {
+      // Edit
+      this.message.content = this.form.value.content;
+      this.message = null;
+    } else {
+      // Create
+      const message = new Message(this.form.value.content, 'Jack');
+      this.messageService.addMessage(message)
+          .subscribe(
+            res => console.log(res),
+            err => console.log(err))
+    }
+    this.form.reset();
+  }
+
+  onClear() {
     this.form.reset();
   }
 }

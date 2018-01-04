@@ -6,10 +6,12 @@
              id='content' 
              class='form-control'
              formControlName='content'
+             [ngModel]='message?.content'
              required>
     </div>
     <div>
-      <button class="btn btn-primary" type='submit'>Save</button>
+      <button type='button' class="btn btn-danger" (click)='onClear()'>Clear</button>
+      <button type='submit' class="btn btn-primary">Save</button>
     </div>
   </form>
   <hr>
