@@ -13,6 +13,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/messages', pathMatch: 'full' },
   { path: 'messages', component: MessagesComponent },
   { path: 'auth', component: AuthorizationComponent, children: [
+    { path: '', redirectTo: 'signup', pathMatch: 'full' },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'logout', component: LogoutComponent },
