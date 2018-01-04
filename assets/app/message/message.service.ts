@@ -7,12 +7,7 @@ import { Observable } from "rxjs/Observable";
 
 @Inject({})
 export class MessageService {
-  private messages: Message[] = [
-    {
-      content: 'Fuck this all',
-      username: 'Garold'
-    }
-  ];
+  private messages: Message[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +22,17 @@ export class MessageService {
   }
 
   getMessage() {
-    return this.messages;
+    return this.http.get('http://localhost:3000/message')
+      .map(response => {
+        const messages = response.obj;
+        let transformedMessages: Message[] = [];
+        for (let message of messages) {
+          transformedMessages.push(new Message(message.content, 'Jack', message._id, null));
+        }
+
+        this.messages = transformedMessages;
+        return transformedMessages;
+      });
   }
 
   deleteMessage(message: Message) {
