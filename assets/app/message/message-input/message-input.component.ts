@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { MessageService } from './message.service';
-import { Message } from './message.model';
+import { MessageService } from '../message.service';
+import { Message } from '../message.model';
 
 @Component({
   selector: 'app-message-input',

@@ -8,9 +8,9 @@ import { AppRoutingModule } from './app-router.module';
 
 // Components
 import { AppComponent } from "./app.component";
-import { MessageComponent } from './message/message.component';
-import { MessageListComponent } from './message/message-list.component';
-import { MessageInputComponent } from './message/message-input.component';
+import { MessageComponent } from './message/message/message.component';
+import { MessageListComponent } from './message/message-list/message-list.component';
+import { MessageInputComponent } from './message/message-input/message-input.component';
 import { MessagesComponent } from './message/messages.component';
 import { HeaderComponent } from './header.component';
 import { AuthorizationComponent } from './auth/authorization.component';
