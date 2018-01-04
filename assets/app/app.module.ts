@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Router
 import { AppRoutingModule } from './app-router.module';
@@ -16,7 +17,6 @@ import { AuthorizationComponent } from './auth/authorization.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { SignupComponent } from './auth/signup/signup.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent]
 })

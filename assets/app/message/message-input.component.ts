@@ -22,7 +22,10 @@ export class MessageInputComponent implements OnInit {
 
   onSubmit() {
     const message = new Message(this.form.value.content, 'Jack');
-    this.messageService.addMessage(message);
+    this.messageService.addMessage(message)
+        .subscribe(
+          res => console.log(res),
+          err => console.log(err))
     this.form.reset();
   }
 }

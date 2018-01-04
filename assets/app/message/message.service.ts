@@ -1,5 +1,9 @@
 import { Inject } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
 import { Message } from "./message.model";
+import 'rxjs/Rx';
+import { Observable } from "rxjs/Observable";
 
 @Inject({})
 export class MessageService {
@@ -10,9 +14,16 @@ export class MessageService {
     }
   ];
 
+  constructor(private http: HttpClient) {}
+
   addMessage(message: Message) {
-    this.messages.push(message);
-    console.log(this.messages);
+    const body = JSON.stringify(message);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:3000/message', body, {headers: headers})
+      .map(response => { return response })
+      .catch(err =>  Observable.throw(err));
   }
 
   getMessage() {
