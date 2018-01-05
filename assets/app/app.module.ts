@@ -18,6 +18,10 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 
+// Services
+import { AuthService } from './auth/auth.service';
+import { MessageService } from './message/message.service';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     HttpClientModule,
     AppRoutingModule,
   ],
+  providers: [AuthService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
