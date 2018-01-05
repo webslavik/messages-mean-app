@@ -4,10 +4,10 @@
       <li routerLinkActive='active'>
         <a routerLink='signup'>Signup</a>
       </li>
-      <li routerLinkActive='active'>
+      <li *ngIf='!isLoggedIn()' routerLinkActive='active'>
         <a routerLink='signin'>Signin</a>
       </li>
-      <li routerLinkActive='active'>
+      <li *ngIf='isLoggedIn()' routerLinkActive='active'>
         <a routerLink='logout'>Logout</a>
       </li>
     </ul>
