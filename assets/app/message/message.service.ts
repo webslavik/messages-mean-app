@@ -21,11 +21,12 @@ export class MessageService {
     return this.http.post('http://localhost:3000/message' + token, body, {headers: headers})
       .map(response => { 
         const result = response;
+        console.log(result);
         const message = new Message(
           result.obj.content, 
-          result.obj.user.firstName, 
+          result.user.firstName, 
           result.obj._id, 
-          result.obj.user._id);
+          result.user._id);
         this.messages.push(message);
         return message;
       })
@@ -42,9 +43,9 @@ export class MessageService {
             message.content,
             message.user.firstName, 
             message._id, 
-            message.user._id));
+            message.user._id)
+          );
         }
-
         this.messages = transformedMessages;
         return transformedMessages;
       });

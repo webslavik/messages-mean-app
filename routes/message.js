@@ -45,7 +45,7 @@ router.post('/', function (req, res, next) {
     }
     var message = new Message({
       content: req.body.content,
-      user: user._id
+      user: user._id,
     });
     message.save(function(err, result) {
       if (err) {
@@ -56,9 +56,11 @@ router.post('/', function (req, res, next) {
       }
       user.messages.push(result);
       user.save();
+
       res.status(201).json({
         message: 'Saved message',
-        obj: result
+        obj: result,
+        user: user
       })
     });
   });
