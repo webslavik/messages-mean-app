@@ -1,0 +1,17 @@
+<div class="backdrop" [ngStyle]='{"display": display}'></div>
+<div id="myModal" class="modal" [ngStyle]='{"display": display}'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)='onErrorHandling()'>&times;</button>
+        <h4 class="modal-title">{{ error?.title }}</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{ error?.message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)='onErrorHandling()'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

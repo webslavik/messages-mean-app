@@ -35,7 +35,7 @@ export class MessageInputComponent implements OnInit {
       this.message = null;
     } else {
       // Create
-      const message = new Message(this.form.value.content, 'Jack');
+      const message = new Message(this.form.value.content, null);
       this.messageService.addMessage(message)
           .subscribe(
             res => console.log(res),

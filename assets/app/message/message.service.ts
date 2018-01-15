@@ -1,16 +1,20 @@
 import { Inject, EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Message } from "./message.model";
 import 'rxjs/Rx';
 import { Observable } from "rxjs/Observable";
+
+import { ErrorService } from "../error/error.service";
+import { Error } from "../error/error.model";
+import { Message } from "./message.model";
 
 @Inject({})
 export class MessageService {
   private messages: Message[] = [];
   messageIsEdit = new EventEmitter<Message>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private errorService: ErrorService) {}
 
   addMessage(message: Message) {
     const body = JSON.stringify(message);
@@ -30,7 +34,10 @@ export class MessageService {
         this.messages.push(message);
         return message;
       })
-      .catch(err =>  Observable.throw(err));
+      .catch(error => {
+        this.errorService.handleError(error.error);
+        return Observable.throw(error);
+      });
   }
 
   getMessage() {
@@ -63,7 +70,10 @@ export class MessageService {
     : '';
     return this.http.patch('http://localhost:3000/message/' + message.messageId + token, body, {headers: headers})
       .map(response => { return response })
-      .catch(err =>  Observable.throw(err));
+      .catch(error => {
+        this.errorService.handleError(error.error);
+        return Observable.throw(error);
+      });
   }
 
   deleteMessage(message: Message) {
@@ -73,6 +83,9 @@ export class MessageService {
     : '';
     return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
       .map(response => { return response })
-      .catch(err =>  Observable.throw(err));
+      .catch(error => {
+        this.errorService.handleError(error.error);
+        return Observable.throw(error);
+      });
   }
 }

@@ -17,10 +17,12 @@ import { AuthorizationComponent } from './auth/authorization.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ErrorComponent } from './error/error.component';
 
 // Services
 import { AuthService } from './auth/auth.service';
 import { MessageService } from './message/message.service';
+import { ErrorService } from './error/error.service';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { MessageService } from './message/message.service';
     HeaderComponent,
     LogoutComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { MessageService } from './message/message.service';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [AuthService, MessageService],
+  providers: [AuthService, MessageService, ErrorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
