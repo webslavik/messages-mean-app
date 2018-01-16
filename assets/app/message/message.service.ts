@@ -27,10 +27,10 @@ export class MessageService {
         const result = response;
         console.log(result);
         const message = new Message(
-          result.obj.content, 
-          result.user.firstName, 
-          result.obj._id, 
-          result.user._id);
+          result['obj'].content, 
+          result['user'].firstName, 
+          result['obj']._id, 
+          result['user']._id);
         this.messages.push(message);
         return message;
       })
@@ -43,7 +43,7 @@ export class MessageService {
   getMessage() {
     return this.http.get('http://localhost:3000/message')
       .map(response => {
-        const messages = response.obj;
+        const messages = response['obj'];
         let transformedMessages: Message[] = [];
         for (let message of messages) {
           transformedMessages.push(new Message(
