@@ -11,7 +11,11 @@ var messageRoutes = require('./routes/message');
 var userRoutes = require('./routes/user');
 
 var app = express();
-mongoose.connect('mongodb://127.0.0.1:27017/node-angular');
+
+var mongodbURL = 'users:test-user@ds159707.mlab.com:59707/mean-messages';
+// var mongodbURL = 'mongodb://127.0.0.1:27017/node-angular';
+
+mongoose.connect(mongodbURL);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
